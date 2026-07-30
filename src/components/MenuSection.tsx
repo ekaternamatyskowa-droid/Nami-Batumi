@@ -35,7 +35,7 @@ export function MenuSection() {
     async function fetchItems() {
       setLoading(true)
       const { data, error } = await supabase
-        .from('menu_items')
+        .from('products')
         .select('*')
         .eq('category', activeCategory)
         .eq('is_available', true)
