@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "story": "Story",
+    "menu": "Menu",
+    "delivery": "Delivery",
+    "contacts": "Contacts",
+    "cart": "Cart",
+    "phone": "Phone"
+  },
+  "hero": {
+    "eyebrow": "Inspired by Batumi",
+    "subtitle": "The taste of seaside moments",
+    "cta": "Open menu",
+    "scroll": "Scroll"
+  },
+  "story": {
+    "eyebrow": "Our story",
+    "heading": "Sea.\nEvening.\nRoll.",
+    "text1": "NAMI is more than sushi delivery. It is the mood of a Batumi sunset — when the air smells of the sea and the evening holds a quiet promise.",
+    "text2": "Every roll is crafted so you can feel that moment, even when you are home."
+  },
+  "moments": {
+    "eyebrow": "Atmosphere",
+    "title": "NAMI\nMoments",
+    "tagline": "Every seaside evening is unique",
+    "labels": [
+      "Sunset over the Black Sea",
+      "The Black Sea",
+      "Evening gatherings",
+      "Glasses at sunset",
+      "Dinner by the sea",
+      "Batumi shore"
+    ]
+  },
+  "signature": {
+    "eyebrow": "Exclusive collection",
+    "title": "Signature\nCollection",
+    "lead": "Rolls crafted\nfor special evenings",
+    "addToCart": "Add to cart",
+    "viewAll": "View full menu",
+    "badge": "Signature",
+    "number": "№01"
+  },
+  "menu": {
+    "eyebrow": "Full menu",
+    "title": "Choose yours",
+    "empty": "This section is coming soon",
+    "addToCart": "+",
+    "categories": {
+      "signature": "Signature",
+      "classic": "Classic",
+      "tempura": "Tempura",
+      "baked": "Baked",
+      "sets": "Sets",
+      "nigiri": "Nigiri",
+      "gunkan": "Gunkan",
+      "extras": "Sauces & Extras"
+    }
+  },
+  "delivery": {
+    "eyebrow": "Delivery",
+    "title": "Across\nBatumi",
+    "zone": "Delivery zone",
+    "time": "30–60 min",
+    "zones": ["Old Batumi", "Centre", "New Boulevard", "Airport area"],
+    "items": [
+      { "title": "Fast delivery", "body": "City centre — 30 to 60 minutes" },
+      { "title": "Free delivery", "body": "On orders from 30 ₾" },
+      { "title": "Every day", "body": "12:00 to 23:00" }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contacts",
+    "title": "Get\nin touch",
+    "tagline": "We are always here — for orders and questions",
+    "sub": "Batumi · Georgia",
+    "cta": "Place an order",
+    "instagram": "Instagram",
+    "telegram": "Telegram",
+    "phone": "Phone"
+  },
+  "cart": {
+    "eyebrow": "Your order",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "order": "Place order",
+    "close": "×",
+    "success": "Order received! We will contact you shortly.",
+    "form": {
+      "name": "Name",
+      "phone": "Phone",
+      "address": "Delivery address",
+      "notes": "Notes",
+      "submit": "Send order",
+      "cancel": "Cancel",
+      "placeholderName": "Your name",
+      "placeholderPhone": "+995 5XX XX XX XX",
+      "placeholderAddress": "Street, building, flat",
+      "placeholderNotes": "Order notes",
+      "validationError": "Please fill in all required fields",
+      "sendError": "Failed to send. Please try again."
+    }
+  },
+  "unit": {
+    "gram": "g"
+  },
+  "footer": {
+    "copy": "© 2026 NAMI · Inspired by Batumi"
+  }
+}

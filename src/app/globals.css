@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #F3E8DA;
+    --brown: #5B3B2C;
+    --blue: #A8C9DD;
+    --dark: #2A2624;
+    --brown-mid: #8a6050;
+    --cream-2: #ede0ce;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* ─── Typography ─── */
+  .font-cormorant {
+    font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  }
+  .font-manrope {
+    font-family: var(--font-manrope), 'Manrope', sans-serif;
+  }
+
+  /* ─── Reveal animation ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.22s; }
+  .reveal-delay-3 { transition-delay: 0.34s; }
+
+  /* ─── Hero parallax image ─── */
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    object-position: center 40%;
+    will-change: transform;
+    top: -15%;
+  }
+
+  /* ─── Scroll indicator animation ─── */
+  .scroll-line {
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    60% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+  }
+
+  /* ─── Wave SVG stroke animation ─── */
+ .wave-draw {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  transition: stroke-dashoffset 5s ease;
+}
+
+.wave-draw.drawn {
+  stroke-dashoffset: 0;
+}
+
+  /* ─── Floating wave SVG animation ─── */
+@keyframes waveBreath {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.wave-float {
+  animation: waveBreath 5s ease-in-out infinite;
+}
+
+  /* ─── Image overlay hover ─── */
+  .editorial-cell {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .editorial-cell img {
+    transition: transform 7s ease;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .editorial-cell:hover img {
+    transform: scale(1.05);
+  }
+  .editorial-cell .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(243,232,218,0.08);
+    transition: background 0.5s;
+  }
+  .editorial-cell:hover .overlay {
+    background: rgba(42, 38, 36, 0.15);
+  }
+  .editorial-cell .cell-label {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: var(--font-cormorant), serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(243, 232, 218, 0.75);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .editorial-cell:hover .cell-label {
+    opacity: 1;
+  }
+
+  /* ─── Cart slide panel ─── */
+  .cart-panel {
+    transform: translateY(120px);
+    opacity: 0;
+    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+  }
+  .cart-panel.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ─── Nav transition ─── */
+  .nav-base {
+    transition: padding 0.5s ease, background 0.5s ease, border-color 0.5s ease;
+  }
+
+  /* ─── Order form ─── */
+  .order-form-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .order-form-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ─── Menu grid hover ─── */
+  .menu-card-hover {
+    transition: background 0.3s ease;
+  }
+  .menu-card-hover:hover {
+    background: var(--cream);
+  }
+
+  /* ─── Signature card ─── */
+  .sig-card-img img {
+    transition: transform 7s ease;
+  }
+  .sig-card-img:hover img {
+    transform: scale(1.05) translateY(-1%);
+  }
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: rgba(91, 59, 44, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(91, 59, 44, 0.5); }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .scroll-line, .wave-float {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .wave-draw { stroke-dashoffset: 0; }
+  .editorial-cell img { transition: none; }
+}
