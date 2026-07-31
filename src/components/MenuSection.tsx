@@ -18,6 +18,7 @@ const FALLBACK_SIGNATURE: MenuItem[] = [
 
 const CATEGORIES = [
   'cold_rolls',
+  'tempura',
   'baked_rolls',
   'sets',
   'sauces',
