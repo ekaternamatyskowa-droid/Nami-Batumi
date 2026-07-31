@@ -164,14 +164,13 @@ export function MenuSection() {
           </p>
         ) : (
           <div
-            className="menu-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '4px',
-              background: 'rgba(91,59,44,0.1)',
-            }}
-          >
+  className="menu-grid"
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '4px',
+  }}
+>
             {items.map((item) => (
               <div
                 key={item.id}
