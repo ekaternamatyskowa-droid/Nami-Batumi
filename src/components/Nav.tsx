@@ -317,36 +317,6 @@ export function Nav() {
             }}>{ t.contact.instagram }</span>
           </a>
 
-          {/* Telegram */}
-          <a
-            href="https://t.me/nami_batumi"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              flex: 1,
-              border: '1px solid rgba(91,59,44,0.15)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              padding: '14px 8px',
-              textDecoration: 'none',
-              color: 'var(--brown)',
-            }}
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B3B2C" strokeWidth="1">
-              <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
-            </svg>
-            <span style={{
-              fontFamily: 'var(--font-manrope), sans-serif',
-              fontSize: '8px',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              opacity: 0.55,
-            }}>{t.contact.telegram}</span>
-          </a>
-
           {/* Phone */}
           <a
             href="tel:+99500000000"

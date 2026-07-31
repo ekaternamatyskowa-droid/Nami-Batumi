@@ -82,7 +82,7 @@ export const translations: Record<string, Translation> = {
         },
         {
           title: 'Ежедневно',
-          body: 'С 12:00 до 23:00',
+          body: 'С 15:00 до 23:00',
         },
       ],
     },
@@ -207,7 +207,7 @@ export const translations: Record<string, Translation> = {
         },
         {
           title: 'Every day',
-          body: '12:00 to 23:00',
+          body: '15:00 to 23:00',
         },
       ],
     },
@@ -332,7 +332,7 @@ export const translations: Record<string, Translation> = {
         },
         {
           title: 'ყოველდღე',
-          body: '12:00-დან 23:00-მდე',
+          body: '15:00-დან 23:00-მდე',
         },
       ],
     },

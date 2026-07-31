@@ -164,53 +164,6 @@ export function ContactSection() {
               </span>
             </a>
 
-            {/* Telegram */}
-            <a
-              href="https://t.me/nami_batumi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-card"
-              style={{
-                width: '120px',
-                height: '120px',
-                border: '1px solid rgba(91,59,44,0.12)',
-                background: 'transparent',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '14px',
-                textDecoration: 'none',
-                color: 'var(--brown)',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement
-                el.style.background = 'rgba(91,59,44,0.03)'
-                el.style.transform = 'translateY(-3px)'
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement
-                el.style.background = 'transparent'
-                el.style.transform = 'translateY(0)'
-              }}
-            >
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B3B2C" strokeWidth="1">
-                <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
-              </svg>
-              <span
-                style={{
-                  fontFamily: 'var(--font-manrope), sans-serif',
-                  fontSize: '9px',
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  opacity: 0.6,
-                }}
-              >
-                {t.contact.telegram}
-              </span>
-            </a>
-
             {/* Phone */}
             <a
               href="tel:+99500000000"
