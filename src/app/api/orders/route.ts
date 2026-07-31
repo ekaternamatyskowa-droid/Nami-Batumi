@@ -42,8 +42,7 @@ export async function POST(req: NextRequest) {
         customer_phone,
         customer_address,
         notes: notes || null,
-        payment_method: payment_method || null,
-        confirmed_no_callback: confirmed_no_callback ?? false,
+        
         status: 'pending',
         telegram_message_id: null,
       })
