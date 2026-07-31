@@ -55,7 +55,7 @@ export function MenuSection() {
         .from('menu_items')
         // Only the columns actually rendered by the menu card / modal —
         // smaller payload than select('*')
-        .select('id, name_ru, name_en, name_ka, description_ru, description_en, description_ka, price, weight_g, image_url, sort_order')
+        .select('id, name_ru, name_en, name_ka, description_ru, description_en, description_ka, price, image_url, sort_order')
         .eq('category', activeCategory)
         .eq('is_available', true)
         .order('sort_order', { ascending: true })
@@ -67,6 +67,9 @@ export function MenuSection() {
         menuItemsCache[activeCategory] = typedData
         setItems(typedData)
       } else {
+        if (error) {
+          console.error('[MenuSection] Supabase fetch error for category', activeCategory, error)
+        }
         setItems([])
       }
       setLoading(false)
