@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
 import { supabase } from '@/lib/supabase'
@@ -24,6 +25,11 @@ const CATEGORIES = [
   'sauces',
 ] as const
 
+// Module-level cache: persists for the lifetime of the page (not per
+// component instance), so once a category has been fetched, switching
+// back to it is instant — no repeated Supabase round-trip.
+const menuItemsCache: Partial<Record<string, MenuItem[]>> = {}
+
 export function MenuSection() {
   const { locale, t } = useLocale()
   const { addItem } = useCart()
@@ -33,23 +39,43 @@ export function MenuSection() {
   const [modalItem, setModalItem] = useState<MenuItem | null>(null)
 
   useEffect(() => {
+    // Already fetched this category in this session — reuse it, no network call
+    const cached = menuItemsCache[activeCategory]
+    if (cached) {
+      setItems(cached)
+      setLoading(false)
+      return
+    }
+
+    let cancelled = false
+
     async function fetchItems() {
       setLoading(true)
       const { data, error } = await supabase
         .from('menu_items')
-        .select('*')
+        // Only the columns actually rendered by the menu card / modal —
+        // smaller payload than select('*')
+        .select('id, name_ru, name_en, name_ka, description_ru, description_en, description_ka, price, weight_g, image_url, sort_order')
         .eq('category', activeCategory)
         .eq('is_available', true)
         .order('sort_order', { ascending: true })
 
+      if (cancelled) return // user already switched tabs again — ignore stale response
+
       if (!error && data && data.length > 0) {
-        setItems(data as MenuItem[])
+        const typedData = data as MenuItem[]
+        menuItemsCache[activeCategory] = typedData
+        setItems(typedData)
       } else {
         setItems([])
       }
       setLoading(false)
     }
     fetchItems()
+
+    return () => {
+      cancelled = true
+    }
   }, [activeCategory])
 
   const getName = (item: MenuItem) =>
@@ -192,14 +218,16 @@ export function MenuSection() {
                       aspectRatio: '4/2.8',
                       overflow: 'hidden',
                       marginBottom: '20px',
+                      position: 'relative',
                     }}
                   >
-                    <img
+                    <Image
                       src={item.image_url}
                       alt={getName(item)}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 900px) 50vw, 33vw"
                       style={{
-                        width: '100%',
-                        height: '100%',
                         objectFit: 'cover',
                         transition: 'transform 6s ease',
                       }}
