@@ -38,7 +38,7 @@ export default function Home() {
       <HeroSection />
       <StorySection />
       <MomentsSection />
-      <SignatureSection />
+      {/* <SignatureSection /> */}
       <MenuSection />
       <DeliverySection />
       <ContactSection />
