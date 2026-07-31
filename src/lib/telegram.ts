@@ -10,6 +10,8 @@ export async function sendOrderToTelegram(order: {
   customerPhone: string
   customerAddress: string
   notes?: string | null
+  paymentMethod?: string | null
+  confirmedNoCallback?: boolean | null
 }): Promise<number> {
   const token = process.env.TELEGRAM_BOT_TOKEN
   const chatId = process.env.TELEGRAM_CHAT_ID
@@ -24,11 +26,17 @@ export async function sendOrderToTelegram(order: {
 
   const message = [
     `🍱 Новый заказ NAMI #${order.id.slice(-6).toUpperCase()}`,
-    '', itemsText, '', `💰 Итого: ${order.total} ₾`, '',
+    '',
+    itemsText,
+    '',
+    `💰 Итого: ${order.total} ₾`,
+    '',
     `👤 ${order.customerName}`,
     `📞 ${order.customerPhone}`,
     `📍 ${order.customerAddress}`,
     order.notes ? `📝 ${order.notes}` : null,
+    order.paymentMethod ? `💳 Оплата: ${order.paymentMethod}` : null,
+    order.confirmedNoCallback ? `✔️ Перезванивать не нужно` : null,
     '',
     `🕐 ${new Date().toLocaleTimeString('ru-RU', { timeZone: 'Asia/Tbilisi' })} (Батуми)`,
   ].filter(Boolean).join('\n')
@@ -43,10 +51,12 @@ export async function sendOrderToTelegram(order: {
       body: JSON.stringify({
         chat_id: chatId,
         text: message,
-        reply_markup: { inline_keyboard: [[
-          { text: '✅ Принять', callback_data: `accept_${order.id}` },
-          { text: '❌ Отклонить', callback_data: `reject_${order.id}` },
-        ]] },
+        reply_markup: {
+          inline_keyboard: [[
+            { text: '✅ Принять', callback_data: `accept_${order.id}` },
+            { text: '❌ Отклонить', callback_data: `reject_${order.id}` },
+          ]],
+        },
       }),
     })
     const payload = await response.json().catch(() => null)
