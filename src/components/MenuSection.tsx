@@ -64,11 +64,11 @@ export function MenuSection() {
   return (
     <section
       id="menu"
-      style={{ padding: '40px 0 120px', background: 'var(--cream-2)' }}
+      style={{ padding: '40px 60px 120px', background: 'var(--cream-2)' }}
     >
       <div
         className="mx-auto menu-inner"
-        style={{ maxWidth: '1200px', padding: '0 60px' }}
+        style={{ maxWidth: '1300px' }}
       >
         {/* Header */}
         <p
@@ -167,7 +167,7 @@ export function MenuSection() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '1px',
+              gap: '4px',
               background: 'rgba(91,59,44,0.1)',
             }}
           >
@@ -296,10 +296,7 @@ export function MenuSection() {
         @media (max-width: 900px) {
           /* Хвостовое пустое пространство после последней карточки уменьшено на ~45% (120px → 64px) */
           #menu {
-            padding: 24px 0 64px !important;
-          }
-          #menu .menu-inner {
-            padding: 0 16px !important;
+            padding: 24px 16px 64px !important;
           }
           #menu .menu-title {
             margin-bottom: 20px !important;
@@ -335,7 +332,7 @@ export function MenuSection() {
           #menu .menu-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             grid-auto-rows: 1fr !important;
-            gap: 1px !important;
+            gap: 4px !important;
           }
           #menu .menu-card {
             padding: 10px !important;
