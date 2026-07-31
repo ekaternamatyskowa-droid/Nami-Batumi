@@ -35,7 +35,7 @@ export function MenuSection() {
     async function fetchItems() {
       setLoading(true)
       const { data, error } = await supabase
-        .from('products')
+        .from('menu_items')
         .select('*')
         .eq('category', activeCategory)
         .eq('is_available', true)
@@ -187,35 +187,30 @@ export function MenuSection() {
               >
                 {item.image_url && (
                   <div
-  className="menu-card-img-wrap"
-  style={{
-    aspectRatio: '1 / 1',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    marginBottom: '20px',
-    background: '#8DBDD5',
-  }}
->
-  <img
-    src={item.image_url}
-    alt={getName(item)}
-    style={{
-      width: '88%',
-      height: '88%',
-      objectFit: 'contain',
-      objectPosition: 'center',
-      transition: 'transform 0.4s ease',
-    }}
-    onMouseEnter={(e) => {
-      ;(e.target as HTMLImageElement).style.transform = 'scale(1.03)'
-    }}
-    onMouseLeave={(e) => {
-      ;(e.target as HTMLImageElement).style.transform = 'scale(1)'
-    }}
-  />
-</div>
+                    className="menu-card-img-wrap"
+                    style={{
+                      aspectRatio: '4/2.8',
+                      overflow: 'hidden',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    <img
+                      src={item.image_url}
+                      alt={getName(item)}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 6s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        ;(e.target as HTMLImageElement).style.transform = 'scale(1.05)'
+                      }}
+                      onMouseLeave={(e) => {
+                        ;(e.target as HTMLImageElement).style.transform = 'none'
+                      }}
+                    />
+                  </div>
                 )}
 
                 <h3
@@ -348,14 +343,10 @@ export function MenuSection() {
             flex-direction: column !important;
           }
           #menu .menu-card-img-wrap {
-  margin-bottom: 8px !important;
-  aspect-ratio: 1 / 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  flex-shrink: 0 !important;
-}
+            margin-bottom: 8px !important;
+            aspect-ratio: 4/3 !important;
+            flex-shrink: 0 !important;
+          }
           #menu .menu-card-name {
             font-size: 14px !important;
             margin-bottom: 3px !important;
