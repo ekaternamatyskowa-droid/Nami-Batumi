@@ -118,13 +118,15 @@ export interface Translation {
     form: {
       name: string
       phone: string
-      address: string
+      street: string
+      building: string
       notes: string
       submit: string
       cancel: string
       placeholderName: string
       placeholderPhone: string
-      placeholderAddress: string
+      placeholderStreet: string
+      placeholderBuilding: string
       placeholderNotes: string
       validationError: string
       sendError: string

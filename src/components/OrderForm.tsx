@@ -410,25 +410,25 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
 
               {/* Улица */}
               <div>
-                <label style={labelStyle}>Улица *</label>
+                <label style={labelStyle}>{t.cart.form.street} *</label>
                 <input
                   type="text"
                   value={form.street}
                   onChange={(e) => setForm({ ...form, street: e.target.value })}
                   style={inputStyle}
-                  placeholder="Улица"
+                  placeholder={t.cart.form.placeholderStreet}
                 />
               </div>
 
               {/* Номер дома */}
               <div>
-                <label style={labelStyle}>Номер дома *</label>
+                <label style={labelStyle}>{t.cart.form.building} *</label>
                 <input
                   type="text"
                   value={form.building}
                   onChange={(e) => setForm({ ...form, building: e.target.value })}
                   style={inputStyle}
-                  placeholder="Дом / квартира"
+                  placeholder={t.cart.form.placeholderBuilding}
                 />
               </div>
 
