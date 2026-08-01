@@ -166,7 +166,7 @@ export function ContactSection() {
 
             {/* Phone */}
             <a
-              href="tel:+99500000000"
+              href="tel:+995590908102"
               className="contact-card"
               style={{
                 width: '120px',
