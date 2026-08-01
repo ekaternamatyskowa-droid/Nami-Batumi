@@ -319,7 +319,7 @@ export function Nav() {
 
           {/* Phone */}
           <a
-            href="tel:+99500000000"
+            href="tel:+995590908102"
             style={{
               flex: 1,
               border: '1px solid rgba(91,59,44,0.15)',
