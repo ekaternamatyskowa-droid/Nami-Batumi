@@ -138,73 +138,7 @@ export function DeliverySection() {
           </div>
         </div>
 
-        {/* Right: map */}
-        <div
-          className="delivery-map"
-          style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }}
-        >
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=41.58,41.60,41.69,41.65&layer=mapnik&marker=41.6168,41.6367"
-            style={{ width: '100%', height: '100%', border: '0' }}
-            loading="lazy"
-          />
-
-          {/* Delivery zone card — hidden on mobile via CSS */}
-          <div
-            className="delivery-zone-card"
-            style={{
-              position: 'absolute',
-              top: '24px',
-              left: '24px',
-              right: '24px',
-              maxWidth: '320px',
-              background: '#F3E8DA',
-              padding: '20px 24px',
-              boxShadow: '0 8px 32px rgba(42,38,36,0.18)',
-              pointerEvents: 'none',
-            }}
-          >
-            <p
-              style={{
-                fontFamily: 'var(--font-manrope), sans-serif',
-                fontSize: '10px',
-                letterSpacing: '0.28em',
-                textTransform: 'uppercase',
-                color: 'var(--brown-mid)',
-                opacity: 0.7,
-                marginBottom: '14px',
-              }}
-            >
-              {t.delivery.zone}
-            </p>
-
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '8px 16px',
-                marginBottom: '16px',
-              }}
-            >
-              {deliveryZones.map((zone) => (
-                <span
-                  key={zone}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontFamily: 'var(--font-manrope), sans-serif',
-                    fontSize: '12px',
-                    fontWeight: 300,
-                    color: 'var(--brown)',
-                  }}
-                >
-                  <span style={{ color: '#7a9eb0', fontSize: '11px' }}>✓</span>
-                  {zone}
-                </span>
-              ))}
-            </div>
-
+    
             <p
               style={{
                 fontFamily: 'var(--font-cormorant), serif',
