@@ -5,7 +5,6 @@ import { useLocale } from '@/lib/locale-context'
 export function DeliverySection() {
   const { t } = useLocale()
   const titleLines = t.delivery.title.split('\n')
-  const deliveryZones = t.delivery.zones
 
   return (
     <section
@@ -19,7 +18,7 @@ export function DeliverySection() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '40% 60%',
+          gridTemplateColumns: '1fr',
           minHeight: '480px',
         }}
         className="delivery-layout"
@@ -34,6 +33,9 @@ export function DeliverySection() {
             justifyContent: 'center',
             background: 'var(--cream)',
             position: 'relative',
+            maxWidth: '640px',
+            marginInline: 'auto',
+            width: '100%',
           }}
         >
           <p
@@ -138,32 +140,6 @@ export function DeliverySection() {
           </div>
         </div>
 
-    
-            <p
-              style={{
-                fontFamily: 'var(--font-cormorant), serif',
-                fontSize: '28px',
-                fontWeight: 300,
-                color: 'var(--brown)',
-                lineHeight: 1,
-              }}
-            >
-              {t.delivery.time}
-            </p>
-          </div>
-
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '1px',
-              height: '100%',
-              background: 'rgba(91,59,44,0.1)',
-              pointerEvents: 'none',
-            }}
-          />
-        </div>
       </div>
 
       <style>{`
@@ -188,13 +164,6 @@ export function DeliverySection() {
           }
           #delivery .delivery-items {
             gap: 16px !important;
-          }
-          #delivery .delivery-map {
-            min-height: 300px !important;
-          }
-          /* Скрыть карточку зоны доставки поверх карты */
-          #delivery .delivery-zone-card {
-            display: none !important;
           }
         }
       `}</style>
