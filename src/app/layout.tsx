@@ -37,7 +37,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru" className={`${cormorant.variable} ${manrope.variable}`}>
+    <html
+  lang="ru"
+  className={`${cormorant.variable} ${manrope.variable}`}
+>
       <body className="bg-cream font-manrope text-dark antialiased overflow-x-hidden">
 
   <Script
