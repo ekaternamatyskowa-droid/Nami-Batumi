@@ -23,7 +23,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: 'NAMI — Inspired by Batumi',
   description:
-    'Премиальная доставка суши в Батуми. Вкус моментов у моря.',
+    'Доставка суши в Батуми. Вкус моментов у моря.',
   openGraph: {
     title: 'NAMI — Inspired by Batumi',
     description: 'Премиальная доставка суши в Батуми.',
@@ -37,10 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-  lang="ru"
-  className={`${cormorant.variable} ${manrope.variable}`}
->
+    <html lang="ru" className={`${cormorant.variable} ${manrope.variable}`}>
       <body className="bg-cream font-manrope text-dark antialiased overflow-x-hidden">
 
   <Script
@@ -58,7 +55,7 @@ export default function RootLayout({
       (window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
 
-      fbq('init', '3035435446790259');
+      fbq('init', '2150975469155430');
       fbq('track', 'PageView');
     `}
   </Script>
