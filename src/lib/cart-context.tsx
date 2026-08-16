@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react'
 import type { CartItem, MenuItem } from '@/types'
 import { useLocale } from '@/lib/locale-context'
+import { trackAddToCart } from '@/lib/pixel'
 
 interface CartContextType {
   items: CartItem[]
@@ -63,6 +64,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         ]
       })
       setIsOpen(true)
+
+      // Fired once per user click, here (not inside the setItems updater,
+      // which React/StrictMode may invoke more than once internally).
+      trackAddToCart({ id: menuItem.id, price: menuItem.price })
     },
     [locale],
   )

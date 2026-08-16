@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
+import { trackInitiateCheckout } from '@/lib/pixel'
 import { OrderForm } from './OrderForm'
 
 export function CartPanel() {
@@ -257,7 +258,10 @@ export function CartPanel() {
 
             {/* Order button */}
             <button
-              onClick={() => setShowForm(true)}
+              onClick={() => {
+                trackInitiateCheckout({ value: total })
+                setShowForm(true)
+              }}
               style={{
                 width: '100%',
                 background: 'var(--cream)',

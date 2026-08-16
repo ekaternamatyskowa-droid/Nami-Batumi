@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
+import { trackViewContent } from '@/lib/pixel'
 import type { MenuItem } from '@/types'
 
 interface ProductModalProps {
@@ -34,6 +35,14 @@ export function ProductModal({ item, onClose }: ProductModalProps) {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
+
+  // Fires once whenever a product is actually opened in the modal
+  // (i.e. the user is viewing that specific item), not on every render.
+  useEffect(() => {
+    if (item) {
+      trackViewContent({ id: item.id, price: item.price })
+    }
+  }, [item])
 
   if (!item) return null
 

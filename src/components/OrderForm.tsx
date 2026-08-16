@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
+import { trackPurchase } from '@/lib/pixel'
 
 interface OrderFormProps {
   isOpen: boolean
@@ -31,6 +32,9 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [showSuccess, setShowSuccess] = useState(false)
+  // Guards against firing Purchase more than once for the same order
+  // (e.g. if handleSubmit were somehow triggered again before unmount).
+  const purchaseTrackedOrderId = useRef<string | null>(null)
 
   // Формируем полный номер для отправки
   const fullPhone = `+995${form.phoneDigits}`
@@ -90,6 +94,14 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
       const result = await res.json().catch(() => null)
       if (!res.ok) {
         throw new Error(result?.error || t.cart.form.sendError)
+      }
+
+      // Purchase fires only now — after /api/orders confirmed success —
+      // and only once per created order.
+      const orderId: string | undefined = result?.orderId
+      if (result?.success && purchaseTrackedOrderId.current !== orderId) {
+        purchaseTrackedOrderId.current = orderId ?? 'unknown'
+        trackPurchase({ value: total })
       }
 
       clearCart()
