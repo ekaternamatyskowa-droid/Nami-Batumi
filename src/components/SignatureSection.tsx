@@ -486,6 +486,7 @@ export function SignatureSection() {
                         e.stopPropagation()
                         addItem(item)
                       }}
+                      aria-label={`${t.signature.addToCart} ${getName(item)} Button`}
                       style={{
                         width: '34px',
                         height: '34px',

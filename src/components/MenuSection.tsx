@@ -310,7 +310,7 @@ export function MenuSection() {
                       btn.style.background = 'none'
                       btn.style.color = 'var(--brown)'
                     }}
-                    aria-label={`${t.signature.addToCart} ${getName(item)}`}
+                    aria-label={`${t.signature.addToCart} ${getName(item)} Button`}
                   >
                     {t.menu.addToCart}
                   </button>
