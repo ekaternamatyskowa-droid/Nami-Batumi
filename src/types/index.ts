@@ -16,6 +16,9 @@ export interface MenuItem {
   is_featured: boolean
   sort_order: number
   created_at: string
+  // Timestamp until which this item counts as "new". NULL/absent or in the
+  // past → no badge. Present and in the future → show the "NEW" badge.
+  new_until?: string | null
 }
 
 export interface CartItem {
@@ -90,6 +93,7 @@ export interface Translation {
     categories: Record<string, string>
     empty: string
     addToCart: string
+    newBadge: string
   }
   delivery: {
     eyebrow: string
@@ -132,6 +136,11 @@ export interface Translation {
       sendError: string
     }
     success: string
+  }
+  workingHours: {
+    title: string
+    body: string
+    cta: string
   }
   unit: {
     gram: string

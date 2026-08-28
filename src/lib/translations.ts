@@ -64,6 +64,7 @@ export const translations: Record<string, Translation> = {
       },
       empty: 'Скоро здесь появятся позиции',
       addToCart: '+',
+      newBadge: 'Новинка',
     },
     delivery: {
       eyebrow: 'Доставка',
@@ -119,6 +120,11 @@ export const translations: Record<string, Translation> = {
         sendError: 'Ошибка при отправке. Попробуйте ещё раз.',
       },
       success: 'Заказ принят! Мы свяжемся с вами.',
+    },
+    workingHours: {
+      title: 'Мы откроемся в 15:00',
+      body: 'Но вы уже можете оформить заказ — мы свяжемся с вами в рабочее время.',
+      cta: 'Оформить заказ',
     },
     unit: {
       gram: 'г',
@@ -191,6 +197,7 @@ export const translations: Record<string, Translation> = {
       },
       empty: 'This section is coming soon',
       addToCart: '+',
+      newBadge: 'New',
     },
     delivery: {
       eyebrow: 'Delivery',
@@ -246,6 +253,11 @@ export const translations: Record<string, Translation> = {
         sendError: 'Failed to send. Please try again.',
       },
       success: 'Order received! We will contact you shortly.',
+    },
+    workingHours: {
+      title: "We'll open at 3:00 PM",
+      body: 'But you can already place your order — we will contact you during working hours.',
+      cta: 'Place order',
     },
     unit: {
       gram: 'g',
@@ -318,6 +330,7 @@ export const translations: Record<string, Translation> = {
       },
       empty: 'მალე გამოჩნდება',
       addToCart: '+',
+      newBadge: 'ახალი',
     },
     delivery: {
       eyebrow: 'მიწოდება',
@@ -373,6 +386,11 @@ export const translations: Record<string, Translation> = {
         sendError: 'გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან.',
       },
       success: 'შეკვეთა მიღებულია! მალე დაგიკავშირდებით.',
+    },
+    workingHours: {
+      title: 'ჩვენ გავიხსნებით 15:00 საათზე',
+      body: 'მაგრამ შეკვეთის გაფორმება უკვე შეგიძლიათ — სამუშაო საათებში დაგიკავშირდებით.',
+      cta: 'შეკვეთა',
     },
     unit: {
       gram: 'გ',

@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
 import { trackViewContent } from '@/lib/pixel'
+import { isNewItem } from '@/lib/new-badge'
 import type { MenuItem } from '@/types'
 
 interface ProductModalProps {
@@ -119,8 +120,28 @@ export function ProductModal({ item, onClose }: ProductModalProps) {
             aspectRatio: '16/10',
             overflow: 'hidden',
             background: 'rgba(91,59,44,0.06)',
+            position: 'relative',
           }}
         >
+          {isNewItem(item.new_until) && (
+            <span
+              style={{
+                position: 'absolute',
+                top: '16px',
+                left: '16px',
+                zIndex: 1,
+                background: 'var(--brown)',
+                color: 'var(--cream)',
+                fontFamily: 'var(--font-manrope), sans-serif',
+                fontSize: '9px',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                padding: '5px 10px',
+              }}
+            >
+              {t.menu.newBadge}
+            </span>
+          )}
           {item.image_url ? (
             <img
               src={item.image_url}

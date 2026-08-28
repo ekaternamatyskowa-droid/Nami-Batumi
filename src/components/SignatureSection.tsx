@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
+import { isNewItem } from '@/lib/new-badge'
 import { supabase } from '@/lib/supabase'
 import { ProductModal } from './ProductModal'
 import type { MenuItem } from '@/types'
@@ -218,6 +219,25 @@ export function SignatureSection() {
               position: 'relative',
             }}
           >
+            {isNewItem(featured.new_until) && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '14px',
+                  left: '14px',
+                  zIndex: 1,
+                  background: 'var(--brown)',
+                  color: 'var(--cream)',
+                  fontFamily: 'var(--font-manrope), sans-serif',
+                  fontSize: '9px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  padding: '5px 10px',
+                }}
+              >
+                {t.menu.newBadge}
+              </span>
+            )}
             <img
               src={featured.image_url || '/photos/batumi-sunset-sun.png'}
               alt={getName(featured)}
@@ -381,7 +401,26 @@ export function SignatureSection() {
                   flexDirection: 'column',
                 }}
               >
-                <div className="sig-other-img" style={{ aspectRatio: '4/3', overflow: 'hidden', flexShrink: 0 }}>
+                <div className="sig-other-img" style={{ aspectRatio: '4/3', overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
+                  {isNewItem(item.new_until) && (
+                    <span
+                      style={{
+                        position: 'absolute',
+                        top: '10px',
+                        left: '10px',
+                        zIndex: 1,
+                        background: 'var(--brown)',
+                        color: 'var(--cream)',
+                        fontFamily: 'var(--font-manrope), sans-serif',
+                        fontSize: '9px',
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        padding: '5px 10px',
+                      }}
+                    >
+                      {t.menu.newBadge}
+                    </span>
+                  )}
                   <img
                     src={item.image_url || '/photos/batumi-sunset-beach.png'}
                     alt={getName(item)}

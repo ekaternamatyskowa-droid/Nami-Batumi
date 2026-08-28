@@ -17,6 +17,7 @@ export type Database = {
           is_featured: boolean
           sort_order: number
           created_at: string
+          new_until: string | null
         }
         Insert: Omit<Database['public']['Tables']['menu_items']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['menu_items']['Insert']>

@@ -11,6 +11,7 @@ import { DeliverySection } from '@/components/DeliverySection'
 import { ContactSection } from '@/components/ContactSection'
 import { Footer } from '@/components/Footer'
 import { CartPanel } from '@/components/CartPanel'
+import { WorkingHoursModal } from '@/components/WorkingHoursModal'
 
 export default function Home() {
   // Global reveal observer
@@ -44,6 +45,7 @@ export default function Home() {
       <ContactSection />
       <Footer />
       <CartPanel />
+      <WorkingHoursModal />
     </main>
   )
 }

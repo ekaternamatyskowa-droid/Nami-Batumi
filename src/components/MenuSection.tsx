@@ -6,6 +6,7 @@ import { useLocale } from '@/lib/locale-context'
 import { useCart } from '@/lib/cart-context'
 import { supabase } from '@/lib/supabase'
 import { ProductModal } from './ProductModal'
+import { isNewItem } from '@/lib/new-badge'
 import type { MenuItem } from '@/types'
 
 const FALLBACK_SIGNATURE: MenuItem[] = [
@@ -55,7 +56,7 @@ export function MenuSection() {
         .from('menu_items')
         // Only the columns actually rendered by the menu card / modal —
         // smaller payload than select('*')
-        .select('id, name_ru, name_en, name_ka, description_ru, description_en, description_ka, price, image_url, sort_order')
+        .select('id, name_ru, name_en, name_ka, description_ru, description_en, description_ka, price, image_url, sort_order, new_until')
         .eq('category', activeCategory)
         .eq('is_available', true)
         .order('sort_order', { ascending: true })
@@ -224,6 +225,25 @@ export function MenuSection() {
                       position: 'relative',
                     }}
                   >
+                    {isNewItem(item.new_until) && (
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '10px',
+                          left: '10px',
+                          zIndex: 1,
+                          background: 'var(--brown)',
+                          color: 'var(--cream)',
+                          fontFamily: 'var(--font-manrope), sans-serif',
+                          fontSize: '9px',
+                          letterSpacing: '0.18em',
+                          textTransform: 'uppercase',
+                          padding: '5px 10px',
+                        }}
+                      >
+                        {t.menu.newBadge}
+                      </span>
+                    )}
                     <Image
                       src={item.image_url}
                       alt={getName(item)}
