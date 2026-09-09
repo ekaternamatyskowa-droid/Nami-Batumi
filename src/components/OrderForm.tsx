@@ -28,7 +28,6 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('cash')
   const [changeOption, setChangeOption] = useState<ChangeOption>('no_change')
   const [changeFrom, setChangeFrom] = useState('')
-  const [confirmed, setConfirmed] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [showSuccess, setShowSuccess] = useState(false)
@@ -54,7 +53,6 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
     if (form.phoneDigits.replace(/\D/g, '').length < 6) { setError('Введите корректный номер телефона'); return }
     if (!form.street.trim()) { setError('Введите улицу'); return }
     if (!form.building.trim()) { setError('Введите номер дома'); return }
-    if (!confirmed) { setError('Подтвердите заказ, установив галочку'); return }
     if (paymentMethod === 'cash' && changeOption === 'need_change' && !changeFrom.trim()) {
       setError('Укажите сумму для сдачи'); return
     }
@@ -87,7 +85,6 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
           customer_address: fullAddress,
           notes: form.notes,
           payment_method: paymentInfo,
-          confirmed_no_callback: confirmed,
         }),
       })
 
@@ -119,7 +116,6 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
     setPaymentMethod('cash')
     setChangeOption('no_change')
     setChangeFrom('')
-    setConfirmed(false)
     setError('')
     onClose()
     if (showSuccess) onSuccess()
@@ -285,7 +281,7 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
               <br />
               Среднее время доставки по Батуми — около 60 минут.
               <br />
-              Если потребуется уточнение, мы свяжемся с вами.
+              В ближайшее время с вами свяжется оператор для подтверждения.
               <br /><br />
               <span style={{ color: 'rgba(243,232,218,0.85)' }}>Спасибо, что выбрали NAMI ❤️</span>
             </p>
@@ -537,53 +533,6 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
               )}
             </div>
 
-            {/* ── Подтверждение ────────────────────────────────────── */}
-            <div style={{
-              marginTop: '24px',
-              paddingTop: '20px',
-              borderTop: '1px solid rgba(243,232,218,0.1)',
-            }}>
-              <div
-                onClick={() => setConfirmed(!confirmed)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '12px',
-                  cursor: 'pointer',
-                  userSelect: 'none',
-                }}
-              >
-                {/* Custom checkbox */}
-                <div style={{
-                  width: '16px',
-                  height: '16px',
-                  border: `1px solid ${confirmed ? 'rgba(243,232,218,0.8)' : 'rgba(243,232,218,0.25)'}`,
-                  background: confirmed ? 'rgba(243,232,218,0.15)' : 'transparent',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  marginTop: '2px',
-                  transition: 'all 0.2s',
-                }}>
-                  {confirmed && (
-                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                      <path d="M1 3.5L3.5 6L8 1" stroke="rgba(243,232,218,0.9)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
-                </div>
-                <span style={{
-                  fontFamily: 'var(--font-manrope), sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 300,
-                  color: 'rgba(243,232,218,0.6)',
-                  lineHeight: 1.6,
-                }}>
-                  Подтверждаю заказ. Перезванивать для подтверждения не нужно.
-                </span>
-              </div>
-            </div>
-
             {/* Error */}
             {error && (
               <p style={{
@@ -603,15 +552,15 @@ export function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
               disabled={submitting}
               style={{
                 width: '100%',
-                background: confirmed ? 'var(--cream)' : 'rgba(243,232,218,0.25)',
-                color: confirmed ? 'var(--brown)' : 'rgba(243,232,218,0.4)',
+                background: 'var(--cream)',
+                color: 'var(--brown)',
                 border: 'none',
                 padding: '16px',
                 fontFamily: 'var(--font-manrope), sans-serif',
                 fontSize: '10px',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                cursor: submitting ? 'not-allowed' : (confirmed ? 'pointer' : 'default'),
+                cursor: submitting ? 'not-allowed' : 'pointer',
                 marginTop: '28px',
                 opacity: submitting ? 0.6 : 1,
                 transition: 'all 0.3s',
