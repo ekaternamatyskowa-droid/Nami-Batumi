@@ -94,6 +94,11 @@ export interface Translation {
     empty: string
     addToCart: string
     newBadge: string
+    notice: {
+      prefix: string
+      linkText: string
+      suffix: string
+    }
   }
   delivery: {
     eyebrow: string

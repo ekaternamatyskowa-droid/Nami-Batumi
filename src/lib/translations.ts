@@ -65,6 +65,11 @@ export const translations: Record<string, Translation> = {
       empty: 'Скоро здесь появятся позиции',
       addToCart: '+',
       newBadge: 'Новинка',
+      notice: {
+        prefix: 'Соусы к роллам выбираются отдельно — загляните во вкладку «',
+        linkText: 'Соусы',
+        suffix: '» 🥢',
+      },
     },
     delivery: {
       eyebrow: 'Доставка',
@@ -198,6 +203,11 @@ export const translations: Record<string, Translation> = {
       empty: 'This section is coming soon',
       addToCart: '+',
       newBadge: 'New',
+      notice: {
+        prefix: 'Sauces are selected separately — check the “',
+        linkText: 'Sauces',
+        suffix: '” tab 🥢',
+      },
     },
     delivery: {
       eyebrow: 'Delivery',
@@ -331,6 +341,11 @@ export const translations: Record<string, Translation> = {
       empty: 'მალე გამოჩნდება',
       addToCart: '+',
       newBadge: 'ახალი',
+      notice: {
+        prefix: 'სოუსები ცალკე ირჩევა — იხილეთ „',
+        linkText: 'სოუსები',
+        suffix: '“ ჩანართი 🥢',
+      },
     },
     delivery: {
       eyebrow: 'მიწოდება',

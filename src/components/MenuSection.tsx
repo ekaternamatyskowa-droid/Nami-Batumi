@@ -124,6 +124,51 @@ export function MenuSection() {
           {t.menu.title}
         </h2>
 
+        {/* Sauces notice — compact, burgundy accent, above category tabs */}
+        <div
+          className="menu-sauces-notice"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            borderLeft: '2px solid #7A2E2E',
+            background: 'rgba(122,46,46,0.05)',
+            padding: '10px 16px',
+            marginBottom: '28px',
+          }}
+        >
+          <p
+            style={{
+              fontFamily: 'var(--font-manrope), sans-serif',
+              fontSize: '12px',
+              letterSpacing: '0.01em',
+              color: 'var(--brown)',
+              opacity: 0.85,
+              margin: 0,
+              lineHeight: 1.5,
+            }}
+          >
+            {t.menu.notice.prefix}
+            <button
+              onClick={() => setActiveCategory('sauces')}
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                margin: 0,
+                font: 'inherit',
+                color: '#7A2E2E',
+                cursor: 'pointer',
+                textDecoration: 'underline',
+                textUnderlineOffset: '2px',
+              }}
+            >
+              {t.menu.notice.linkText}
+            </button>
+            {t.menu.notice.suffix}
+          </p>
+        </div>
+
         {/* Category tabs — desktop static, mobile scrollable */}
         <div
           className="menu-categories"
@@ -345,6 +390,13 @@ export function MenuSection() {
 
       <style>{`
         @media (max-width: 900px) {
+          #menu .menu-sauces-notice {
+            padding: 8px 12px !important;
+            margin-bottom: 20px !important;
+          }
+          #menu .menu-sauces-notice p {
+            font-size: 11px !important;
+          }
           /* Хвостовое пустое пространство после последней карточки уменьшено на ~45% (120px → 64px) */
           #menu {
             padding: 24px 16px 64px !important;
