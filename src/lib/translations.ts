@@ -2,6 +2,10 @@ import type { Translation } from '@/types'
 
 export const translations: Record<string, Translation> = {
   ru: {
+    closedScreen: {
+      line1: 'К сожалению, сегодня мы не работаем.',
+      line2: 'Приносим свои извинения за неудобства.',
+    },
     nav: {
       story: 'История',
       menu: 'Меню',
@@ -140,6 +144,10 @@ export const translations: Record<string, Translation> = {
   },
 
   en: {
+    closedScreen: {
+      line1: 'Unfortunately, we are closed today.',
+      line2: 'We apologize for the inconvenience.',
+    },
     nav: {
       story: 'Story',
       menu: 'Menu',
@@ -278,6 +286,10 @@ export const translations: Record<string, Translation> = {
   },
 
   ge: {
+    closedScreen: {
+      line1: 'სამწუხაროდ, დღეს არ ვმუშაობთ.',
+      line2: 'ბოდიშს გიხდით შექმნილი დისკომფორტისთვის.',
+    },
     nav: {
       story: 'ისტორია',
       menu: 'მენიუ',

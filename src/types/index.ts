@@ -52,6 +52,10 @@ export type MenuCategory =
   | 'sauces'
 
 export interface Translation {
+  closedScreen: {
+    line1: string
+    line2: string
+  }
   nav: {
     story: string
     menu: string
